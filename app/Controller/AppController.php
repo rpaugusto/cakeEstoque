@@ -32,9 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     
-    public function beforeFilter() {
-        $this->theme = 'admin';
-    }
+    
     
     
 }
