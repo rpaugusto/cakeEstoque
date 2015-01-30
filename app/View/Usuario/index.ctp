@@ -24,7 +24,7 @@
             echo ('</td><td>');
             echo $this->Html->link('Editar',array('controller' => 'usuario', 'action' => 'editar', $usuario['Usuario']['id'] ));
             echo ('</td><td>');
-            echo $this->Html->link('Excluir',array('controller' => 'usuario', 'action' => 'excluir', $usuario['Usuario']['id'] ));
+            echo $this->Form->postlink('Excluir',array('action' => 'excluir', $usuario['Usuario']['id']), array('confirm' => 'Deseja realmente excluir o suario'.$usuario['Usuario']['login']));
             echo ('</td></tr>');
         }
     ?>

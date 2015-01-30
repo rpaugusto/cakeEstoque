@@ -64,8 +64,18 @@ class UsuarioController extends AppController {
         
         if (!$this->request->data) {
             $this->request->data = $usuario;
+        }            
+        
+    }
+    
+    public function excluir($id = NULL){
+        if ($this->request->is('get')){
+            throw new MethodNotAllowedException('Erro!');
         }
-               
+        if ($this->Usuario->delete($id)){
+            $this->Session->setFlash('Usuario apagado com sucesso!', $element = 'default', $params = array('class' => 'success'));
+            return $this->redirect(array('action' => 'index'));
+        }
         
     }
 
