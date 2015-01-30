@@ -47,22 +47,25 @@ class UsuarioController extends AppController {
         }
         //localiza id selecionado
         $usuario = $this->Usuario->findById($id);
+        
         //verifica se existe o usuario referente a id selecionada
         if (!$usuario) {
             throw new NotFoundException('Usuario selecionado não existe!');
         }
         //processando a edição do usuario
-        if ($this->request->id(array('post', 'put'))) {
+        if ($this->request->is(array('post', 'put'))) {
             $this->Usuario->id = $id;
             if($this->Usuario->save($this->request->data)){
                 $this->Session->setFlash('Usuario alterado com sucesso!', $elemet = 'default', $params = array('class' => 'success'));
-                return $this->redirect(array('action' = 'index'));
+                return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash('Usuario não pode ser alterado!');
         }
         
-        $this->requestAction($params)
-        
+        if (!$this->request->data) {
+            $this->request->data = $usuario;
+        }
+               
         
     }
 

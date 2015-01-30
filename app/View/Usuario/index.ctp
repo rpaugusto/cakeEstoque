@@ -7,7 +7,7 @@
         <td>Indice</td>
         <td>Nome</td>
         <td>login</td>
-        <td>Ações</td>
+        <td colspan="3">Ações</td>
     </tr>
     
     <?php
@@ -21,6 +21,10 @@
             echo $usuario['Usuario']['login'];
             echo ('</td><td>');
             echo $this->Html->link('Detalhe',array('controller' => 'usuario', 'action' => 'ver', $usuario['Usuario']['id'] ));
+            echo ('</td><td>');
+            echo $this->Html->link('Editar',array('controller' => 'usuario', 'action' => 'editar', $usuario['Usuario']['id'] ));
+            echo ('</td><td>');
+            echo $this->Html->link('Excluir',array('controller' => 'usuario', 'action' => 'excluir', $usuario['Usuario']['id'] ));
             echo ('</td></tr>');
         }
     ?>
