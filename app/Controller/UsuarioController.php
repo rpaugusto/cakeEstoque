@@ -55,11 +55,15 @@ class UsuarioController extends AppController {
         if ($this->request->id(array('post', 'put'))) {
             $this->Usuario->id = $id;
             if($this->Usuario->save($this->request->data)){
-                $this->Session->setFlash('Usuario alterado com sucesso!', 'default', array('class' => 'success'));
+                $this->Session->setFlash('Usuario alterado com sucesso!', $elemet = 'default', $params = array('class' => 'success'));
+                return $this->redirect(array('action' = 'index'));
             }
+            $this->Session->setFlash('Usuario não pode ser alterado!');
         }
-        //retorna os detalhes do usuario referente a id selecionada
-        $this->set('usuarios', $usuario);
+        
+        $this->requestAction($params)
+        
+        
     }
 
 }
