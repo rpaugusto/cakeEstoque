@@ -1,6 +1,6 @@
 <h2>Detalhes do Usuario</h2>
 <?php
-    echo '<p>Nome: '.$usuarios['Usuario']['nome'].' '.$usuarios['Usuario']['sobrenome'].'</p>';
+    echo '<p>Nome: '.$usuarios['Usuario']['nome'].'</p>';
     echo 'E-mail: '.$usuarios['Usuario']['email'].'<br/>';
     echo 'Login: '.$usuarios['Usuario']['login'].'<br/>';
     echo 'Cadastado em: '.$this->time->format('d / m / Y - h:i A',$usuarios['Usuario']['created']).'<br/>';
