@@ -11,12 +11,12 @@
     </tr>
     
     <?php
-        
+      
         foreach ($usuarios as $usuario) {
             echo ('<tr><td>');
             echo $usuario['Usuario']['id'];
             echo ('</td><td>');
-            echo $usuario['Usuario']['nome'].' '.$usuario['Usuario']['sobrenome'] ;
+            echo $usuario['Usuario']['nome'] ;
             echo ('</td><td>');
             echo $usuario['Usuario']['login'];
             echo ('</td><td>');
