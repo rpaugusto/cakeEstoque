@@ -7,8 +7,15 @@
  */
 class UsuarioController extends AppController {
 
-    public $helpers = array('Html', 'Form');
-    public $components = array('Session', 'Paginator');
+    public $helpers = array(
+        'Html',
+        'Form',
+        'Time',
+        'Js');
+    
+    public $components = array(
+        'Session',
+        'RequestHandler');
     
     public $paginate = array(
         'limit' => 2,
@@ -19,8 +26,10 @@ class UsuarioController extends AppController {
 
     public function index() {
         $this->Usuario->recursive = 0;
-        $this->Paginator->settings = $this->paginate;
-        $this->set('usuarios', $this->Paginator->paginate());
+        $this->paginate['usuario']['limit'] = 3;
+        $this->paginate['usuario']['order'] = array('usuario.id' => 'asc');
+        
+        $this->set('usuarios', $this->paginate());
     }
 
     public function ver($id = NULL) {
@@ -35,7 +44,7 @@ class UsuarioController extends AppController {
             throw new NotFoundException('Usuario selecionado não existe!');
         }
         //retorna os detalhes do usuario referente a id selecionada
-        $this->set('usuarios', $usuario);
+        $this->set('usuarios', $usuario);  
     }
 
     public function novo() {

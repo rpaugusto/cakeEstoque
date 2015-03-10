@@ -8,12 +8,29 @@
 
 class ClienteController extends AppController {
     
-    public $helpers = array('Html', 'Form', 'Time');
-    public $components = array('Session');
+    public $helpers = array(
+        'Html',
+        'Form',
+        'Time');
+    
+    public $components = array(
+        'Session',
+        'RequestHandler');
+    
+    public $paginate = array(
+        'limit' => 10,
+        'order' => array(
+            'cliente.id' => 'asc'
+        )
+    );
 
     
     public function index(){
-        $this->set('clientes', $this->Cliente->find('all'));
+        $this->Cliente->recursive = 0;
+        $this->paginate['cliente']['limit'] = 10;
+        $this->paginate['cliente']['order'] = array('usuario.id' => 'asc');
+        
+        $this->set('clientes', $this->paginate());
     }
     
     public function novo(){
