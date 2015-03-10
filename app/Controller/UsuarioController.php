@@ -8,10 +8,19 @@
 class UsuarioController extends AppController {
 
     public $helpers = array('Html', 'Form');
-    public $components = array('Session');
+    public $components = array('Session', 'Paginator');
+    
+    public $paginate = array(
+        'limit' => 2,
+        'order' => array(
+            'usuario.id' => 'asc' 
+        )
+    );
 
     public function index() {
-        $this->set('usuarios', $this->Usuario->find('all'));
+        $this->Usuario->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
+        $this->set('usuarios', $this->Paginator->paginate());
     }
 
     public function ver($id = NULL) {

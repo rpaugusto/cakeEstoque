@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -27,7 +28,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <?php
         echo $this->Html->meta('icon');
 
-        echo $this->Html->css(array('estilo.css', 'bootstrap.min', 'bootstrap-theme.min'));
+        echo $this->Html->css(array('estilo.css', 'bootstrap', 'bootstrap-theme'));
         echo $this->Html->script(array('jquery', 'docs.min', 'bootstrap.min'));
 
         echo $this->fetch('meta');
@@ -35,28 +36,21 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         echo $this->fetch('script');
         ?>
     </head>
-    <body>
-
+    <body role="document">
+        
+        <!-- chama o elemtno menu  -->
         <?php echo $this->element('menu'); ?>
+        
+        <div class="container" role="main">
 
-        <div class="container theme-showcase" role="main">
-
+            <!-- carregar todas as menssagens das ações do sistema -->
             <?php echo $this->Session->flash(); ?>
 
+            <!-- carregar todo o comteudo da pagina ao ser chamado -->
             <?php echo $this->fetch('content'); ?>
 
-            <div id="footer">
-                <?php
-                echo $this->Html->link(
-                        $this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')), 'http://www.cakephp.org/', array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-                );
-                ?>
-                <p>
-                    <?php echo $cakeVersion; ?>
-                </p>
-            </div>
-
         </div> <!-- /.theme-showcase -->
-
+        <?php //echo $this->element('sql_dump'); ?>
+        
     </body>
 </html>
