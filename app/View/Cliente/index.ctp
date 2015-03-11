@@ -45,26 +45,26 @@
             <tbody>
                 <?php foreach ($clientes as $cliente) { ?>
                     <tr>
-                        <td><?php echo h($cliente['Cliente']['id']); ?></td>
+                        <td class="text-center" ><?php echo h($cliente['Cliente']['id']); ?></td>
                         <td><?php echo h($cliente['Cliente']['nome']); ?></td>
                         <td><?php echo h($cliente['Cliente']['telefone']); ?></td>
                         <td><?php echo h($cliente['Cliente']['cpf']); ?></td>
-                        <td>
-                            <ul class="pagination-sm">
-                                <?php
-                            echo '<li>'.$this->Html->link(__('Ver'),
+                        <td class="text-center" >
+                            <div class="btn-group">
+                            <?php
+                            echo $this->Html->link(__('Ver'),
                                 array('action' => 'ver', $cliente['Cliente']['id']),
-                                array('class' => '')).'</li>';
-                            echo '<li>'.$this->Html->link(__('Editar'),
+                                array('class' => 'btn btn-xs btn-default'));
+                            echo $this->Html->link(__('Editar'),
                                 array('action' => 'editar', $cliente['Cliente']['id']),
-                                array('class' => '')).'</li>';
-                            echo '<li>'.$this->Form->postlink(__('Excluir'),
+                                array('class' => 'btn btn-xs btn-default'));
+                            echo $this->Form->postlink(__('Excluir'),
                                 array('action' =>'excluir', $cliente['Cliente']['id']),
                                 array(
-                                    'class' => '',
+                                    'class' => 'btn btn-xs btn-danger',
                                     __('Tem certeza que deseja excluir # %s', $cliente['Cliente']['id'])
-                            )).'</li>';?>
-                            </ul>    
+                            ));?>
+                            </div>
                         </td>
                     </tr>
                  <?php } ?>
